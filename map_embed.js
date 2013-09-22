@@ -188,7 +188,9 @@ function gm_process_json(oJson) {
             }
             var time = new String(curr_stream.at);
             time = time.replace("T", " ");
-
+            if (time.substr(0,4) != "2012" &&time.substr(0,4) != "2013"  ) {
+            	continue;
+            }
             
             var symbol = "";
             if (curr_stream.unit.symbol == undefined) {
