@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Europe Geigermap: At-a-glance</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<style type="text/css">
+  html { height: 100% }
+  body { height: 100%; margin: 0px; padding: 0px; font-family: helvetica neue, helvetica, arial;}
+  #topbar {height: 37px; background-image: url('http://japan.failedrobot.com/topbar.gif'); width: 100%; margin: 0px; padding-top: 11px; padding-left: 25px; font-size: 10pt; color: #bbbbbb; font-weight: 500;}
+  #topbar a{color: #bbbbbb; text-decoration: none; letter-spacing: 1px;}
+
+  #key {font-size: 11px; letter-spacing: 1px; line-height: 11px; }
+  #map_canvas  { height: 80%; margin-right: 20px; margin-left: 20px;}
+  #map_canvas_spain  { height: 80%;}
+  #column {width:38.5%; height:100%; float:left;  background-color: white;/*#99b3cc*/}
+  #column20 {width:22%; float:right; clear:right;}  
+  #disqus_thread { margin: 0px;  margin-left: 20px; font-size: 12px; color: #333333; width: 75%; float: left}
+  h1 {font-size: 24px; font-weight: normal; color: #cccccc}
+  h2 {font-size: 16px; font-weight: normal; color: #676464;}
+  h1.map {font-size: 24px; font-weight: normal; color: white; line-height: 5px;}
+  p {font-size: 12px; color: #888888; line-height: 15px; padding-right: 27px; letter-spacing: 1.05px;}
+  a.red:link, a.red:visited, a.red:active {color: #ff0000; text-decoration: underline; letter-spacing: 1px; line-height: 12px;}
+  a:link, a:visited, a:active {color: #3677f0; text-decoration: none;}
+  a:hover {text-decoration: underline;}
+</style>
+
+</head>
+<body onload="initialize()">
+<div id="topbar">
+<span><a href="../">Japan</a></span>
+&nbsp;&nbsp;
+<span style="text-decoration: underline"><a href="./">Europe</a></span>
+&nbsp;&nbsp;
+<span><a href="../north_america/">North America</a></span>
+</div>
+<h1 style=" margin-left: 20px;">Europe Geigermap: At-a-glance</h1>
+<div id="column">
+		<script type="text/javascript" src="http://japan.failedrobot.com/map_embed.js"></script>
+		<script>
+			gm_init({
+				zoom: 6,
+				lat:51,
+				lng:10,
+				div: "map_canvas",
+				map_name: "germany",
+				show_label:true,
+				threshold: 0.228
+			});
+			gm_init({
+				zoom: 5,
+				lat:38.4,
+				lng:-7,
+				div: "map_canvas_spain",
+				map_name: "spain",
+				show_label:false,
+				threshold: 0.228
+			});
+			gm_load_feeds({
+				json: new Array("http://api.pachube.com/v2/feeds.json?key=dW1_5iByGtVAbVKe5hPTMdrVglDovcnVDgvqvZYsNB5VI-rfEdiZIhRb4voCw41m&tag=sensor:type%3Dradiation&lat=51&lon=10&distance=1000", "http://api.pachube.com/v2/feeds.json?key=dW1_5iByGtVAbVKe5hPTMdrVglDovcnVDgvqvZYsNB5VI-rfEdiZIhRb4voCw41m&tag=sensor:type%3Dradiation&lat=46&lon=6&distance=5000&per_page=1000"),
+			});
+			create_maps();
+		</script>
+	<div id="map_canvas"></div>
+	<h2 style=" margin-left: 20px;">Germany, Belgium & Switzerland</h2>
+</div>
+<div id="column">
+	<div id="map_canvas_spain"></div>
+	<h2>Spain</h2>
+</div>
+
+
+<div id="column20">
+<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fjapan.failedrobot.com%2F&amp;layout=standard&amp;show_faces=false&amp;width=260&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=30" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:260px; height:35px; padding-left: 0px; padding-top: 0px; padding-bottom: 0px;" allowTransparency="true"></iframe>
+<div name ="content1" style="font-size: 13px; color:#888; padding: 0px 10px 0px 0px;"></div>
+<div name ="content2" style="font-size: 13px; color:#888; padding: 0px 10px 0px 0px;"></div>
+<div style="font-size: 13px; color:#888; padding: 0px 10px 10px 0px;">		
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>	
+</div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'japangeigermap'; // required: replace example with your forum shortname
+
+    // The following are highly recommended additional parameters. Remove the slashes in front to use.
+    var disqus_identifier = 'europe';
+    var disqus_url = 'http://japan.failedrobot.com/europe/';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+	</div>
+
+<script type="text/javascript"> 
+
+
+function display_en() {
+	var content = document.getElementsByName("content1")[0];
+	content.innerHTML = '<p>These maps visualise crowd-sourced radiation geiger counter readings from across Europe. Click on the circles to get more information on the  source of each reading.</p>'+
+			'<p>Readings are aggregated by <a href="http://community.pachube.com/node/608" target="_new">Pachube here</a>. </p><hr/>';
+			
+	var content2 = document.getElementsByName("content2")[0];
+			content2.innerHTML = 
+			'<p id="key"><img src="http://japan.failedrobot.com/key_01.gif" align=left>Below the global average for background radiation ( 0.228 &#181;Sv per hr ).<br/><br/></p>'+
+			'<p id="key"><img src="http://japan.failedrobot.com/key_02.png" align=left>Above the global average for background radiation ( 0.228 &#181;Sv per hr ).<br/><br/></p>'+
+			'<p id="key"><img src="http://japan.failedrobot.com/key_03.png" align=left>10x above the global average for background radiation.<br/><br/></p>'+
+			'<p id="key"><img src="http://japan.failedrobot.com/key_04.png" align=left>100x above the global average for background radiation.<br/><br/></p>'+
+			 '<hr/>'+
+			'<p>Europe Geigermap is created by <a href="http://blog.failedrobot.com/?page_id=5" target="_new">Haiyan Zhang</a>. Read my <a href="http://blog.failedrobot.com/?p=199" target="_new">blog post</a> on this map and you can also <a href="mailto:haiyan@gmail.com">email me your feedback</a>.</p>'+
+			'<p>Measurements are represented in units of <b>microsieverts per hour ( &#181;Sv / h)</b>. Original geiger counter readings use the unit nGy/h and the conversion taken is 1 Gy = 1 Sv. (See the <a href="http://en.wikipedia.org/wiki/Sievert" target="_new">Wikipedia entry on Sieverts</a>)</p>'+
+			'<p>Tweet me your feedback <a href="http://twitter.com/#!/haiyan" target="_new">@haiyan</a>, with hashtag <a href="http://twitter.com/#!/search?q=%23geigermaps" target="_new">#geigermaps</a></p>'+
+			'<p>This map was inspired by <a href="http://twitter.com/#!/kotobuki">@Kotobuki\'s</a> Geigermaps work (<a href="http://geigermaps.jp/">http://geigermaps.jp</a>). </p>'+
+			'<p>Labels are made with Marc Ridley\'s <a href="http://blog.mridey.com/2009/09/label-overlay-example-for-google-maps.html" target="_new">Label class</a>. Thanks to Neil Churcher (<a href="http://twitter.com/neilchurcher" target="_new">@neilchurcher</a>) for collaborating on the information design. Thanks to Sacha Raposo from <a href="http://relishinteractive.com/" target="_new">Relish Interactive</a> for fixing some display issues in IE6 & 7.<br/></p>'+
+			'<p>Thanks to Alberto Naranjo for pulling some of the radiation feeds from Spain into Pachube. Please visit his site, <a href="http://radiactividad.org/" target="_new">radiactividad.org</a>, to learn more about nuclear power stations in Spain.</p>'+
+			'<p>Visit the <a href="http://geigermaps.jp/wiki/" target="_new">Geigermaps.jp/wiki</a></p>'+
+			'<p>Hit reload to refresh these readings.</p>';
+}
+
+var language = navigator.language; 
+if (language.indexOf('jp') > -1 ||language.indexOf('ja') > -1 ) display_jp(); 
+else {
+	display_en();
+}
+
+</script>	
+</body>
+</html>

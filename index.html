@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Japan Geigermap: At-a-glance</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<style type="text/css">
+  html { height: 100% }
+  body { height: 100%; margin: 0px; margin-top: 10px;padding: 0px; font-family: helvetica neue, helvetica, arial; font-size: 14px;}
+  #topbar {height: 37px; background-image: url('http://japan.failedrobot.com/topbar.gif'); width: 100%; margin: 0px; padding-top: 11px; padding-left: 25px; font-size: 10pt; color: #bbbbbb; font-weight: 500;}
+  #topbar a{color: #bbbbbb; text-decoration: none; letter-spacing: 1px;}
+  
+  #key {font-size: 11px; letter-spacing: 1px; line-height: 11px; }
+  #map_canvas  { height: 75%; margin: 20px; margin-top: 15px;}
+  #map_canvas_fukushima  { height: 60%; margin-right: 20px; margin-left: 20px; width: 48%; float: left}
+  #map_canvas_tokyo  { height: 60%; margin-right: 20px;}
+  #map_details {margin-left: 20px; margin-right: 20px; margin-top: 20px; font-size: 11px; width: 96%; display: block;color: #676464}
+  #timestamp {float:right;}
+  #tweets {margin-right: 20px;}
+  #datasource {font-size: 11px;}
+  #datasource_detail {letter-spacing: 0.5px; font-size: 10.5px;}
+  #disqus_thread { margin: 20px; font-size: 12px; color: #333333;}
+  #column80 {width:78%; height:100%; float:left;  background-color: white;/*#99b3cc*/}
+  #column20 {width:22%; float:right; clear:right;}
+  h1 {font-size: 18px; font-weight: normal; color: #676464}
+  h2 {font-size: 16px; font-weight: normal; color: #676464}
+  h1.map {font-size: 24px; font-weight: normal; color: white; line-height: 5px;}
+  p {font-size: 12px; color: #888888; line-height: 15px; padding-right: 27px; letter-spacing: 1.05px;}
+  a.red:link, a.red:visited, a.red:active {color: #ff0000; text-decoration: underline; letter-spacing: 1px; line-height: 12px;}
+  a:link, a:visited, a:active {color: #3677f0; text-decoration: none;}
+  a:hover {text-decoration: underline;}
+
+  .ds {border: 2px solid #eee; padding:5px;}
+  .ds a:link, .ds a:visited{color: #9b9b9b}
+  .ds a:hover{color: #7ca6f5;text-decoration: none; }
+</style>
+
+</head>
+<body onload="initialize()">
+
+
+	<div id="column80">
+      
+
+	<div id="map_details">
+	<span style="float:right" name="search_form">
+    </span>
+	<span name="page_title"></span>
+	<span id="datasource"><b>Select data source:&nbsp;&nbsp;</b>
+	<span class="ds" id="menu_all"></span>
+	<span class="ds" id="menu_sc"></span>
+	<span class="ds" id="menu_crowd"></span>
+	<span class="ds" id="menu_govt"></span>
+	</span>
+
+<script type="text/javascript">
+var curr_switch_menu = 'undefined';
+function switch_menu(item) {
+	var it=document.getElementById(item);
+	it.style.backgroundColor = "#eee";
+	var last=document.getElementById(curr_switch_menu);
+	if (last != undefined) {
+	last.style.backgroundColor = "#ffffff";
+	}
+	curr_switch_menu = item;
+}
+</script>
+	<div name="latest_time" style="float:right; display:block; text-align: right;"></div>
+	</div>
+		<div id="map_canvas"></div>
+		<div id="map_canvas_fukushima"></div>
+		<div id="map_canvas_tokyo"></div>
+
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'japangeigermap'; // required: replace example with your forum shortname
+
+    // The following are highly recommended additional parameters. Remove the slashes in front to use.
+    // var disqus_identifier = 'unique_dynamic_id_1234';
+    var disqus_url = 'http://japan.failedrobot.com/';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+	</div>
+	
+	<div id="column20" style="">
+<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fjapan.failedrobot.com%2F&amp;layout=standard&amp;show_faces=false&amp;width=260&amp;action=recommend&amp;font=arial&amp;colorscheme=light&amp;height=30" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:260px; height:40px; padding-left: 0px; padding-top: 20px; padding-bottom: 0px;" allowTransparency="true"></iframe>
+		<div name ="content1" style="font-size: 13px; color:#888; padding: 0px 10px 0px 0px;">		
+		</div>
+		<div name ="content2" style="font-size: 13px; color:#888; padding: 0px 10px 0px 0px;">		
+		</div>
+
+		<div id="tweets">
+<script src="http://widgets.twimg.com/j/2/widget.js"></script>
+<script>
+new TWTR.Widget({
+  version: 2,
+  type: 'search',
+  search: 'geigermaps OR fukushima OR failedrobot OR Tsuruga',
+  interval: 6000,
+  title: '',
+  subject: '',
+  width: 'auto',
+  height: 700,
+  theme: {
+    shell: {
+      background: '#cccccc',//'#99b3cc',
+      color: '#ffffff'
+    },
+    tweets: {
+      background: '#ffffff',
+      color: '#444444',
+      links: '#4380f1'
+    }
+  },
+  features: {
+    scrollbar: false,
+    loop: true,
+    live: true,
+    hashtags: true,
+    timestamp: true,
+    avatars: true,
+    toptweets: true,
+    behavior: 'default'
+  }
+}).render().start();
+</script>		
+
+		</div>	
+</body>
+
+	</div>
+	
+	
+	
+<script type="text/javascript"> 
+
+function display_jp() {
+	var title = document.getElementsByName("page_title")[0];
+	title.innerHTML =  '<h1>Japan Geigermap : At-a-glance</h1>';
+	var content = document.getElementsByName("content1")[0];
+	content.innerHTML = 
+			'<p><small><a href="#" onClick="display_jp();">日本語</a> | <a href="#" onClick="display_en();">English</a></small></p>'+
+			'<p>このマップはクラウドソースにより日本各地の放射線測定値を可視化しています。円をクリックするとそれぞれの測定値のソースの情報を確認できます。</p>'+
+			'<p>観測点の数は、データフィードの妥当性により時間とともに変化します。文部科学省など公式な日本政府からの約185個のフィードがあり、それ以外にTokyo HackerSpaceなど、個人、大学、地方自治体など他のソースからのものがあります。</p>'+
+			'<p>これらの測定値は<a href="http://community.pachube.com/node/608" target="_new">Pachube</a>で情報集約されています。</p><hr/>'+
+			'<p id="key"><img src="key_01.gif" align=left>日本での公共空間における放射線測定値の平均値（0.081µSv/h）以下。<br/><br/></p>'+
+			'<p id="key"><img src="key_02.png" align=left>日本での公共空間における放射線測定値の平均値（0.081µSv/h）以上。<br/><br/></p>'+
+			'<p id="key"><img src="key_03.png" align=left>日本での公共空間における放射線測定値の平均値の10倍以上。<br/><br/></p>'+
+			'<p id="key"><img src="key_04.png" align=left>日本での公共空間における放射線測定値の平均値の100倍以上。<br/><br/></p>'+
+			'<p id="key"><img src="key_05.png" align=left>水の放射線。<br/>健康に対する影響のデータはなし。<br/><br/></p><hr/>'+
+			'<p><img src="images/safecast.png"><br/>Safecastは、日本国内、およびグローバルな放射線センサネットワークを構築するボランティア組織活動です。クラウドソースのデータ点の多くはこのこの取り組みによるものです。<a href="http://blog.safecast.org/ja">詳しくはSafecastのサイトをご覧下さい。</a></p>';
+	var content2 = document.getElementsByName("content2")[0];
+	content2.innerHTML = '<hr/>'+
+			'<p>測定値はマイクロシーベルト毎時（µSv/h）単位で表示しています。元のガイガーカウンター測定値がnGy/hの場合には1 Gy = 1 Svとして変換しています（Wikipediaでの<a href="http://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%BC%E3%83%99%E3%83%AB%E3%83%88" target="_new">シーベルトに関する記事</a>を参照してください）。</p>'+
+			'<p>ガイガーマップは、文部科学省（MEXT）が提供する日本の公共空間における放射線測定値の平均値（0.081マイクロシーベルト毎時）を参照しています。これらの値は通常の背景放射線よりもかなり低いです。これは、背景放射線を計算するのに用いられる、あらゆる種類の放射線を検出するようにはガイガーカウンターがキャリブレーションされていないためです。</p>'+
+			'<p>Japanガイガーマップは <a href="http://blog.failedrobot.com/?page_id=5" target="_new">Haiyan Zhang</a>が作成しました。このマップに関する私の<a href="http://blog.failedrobot.com/?p=199" target="_new">ブログ記事</a>を読んでフィードバックを残してください。</p>'+
+			'<p>ハッシュタグ<a href="http://twitter.com/#!/search?q=%23geigermaps" target="_new">#geigermaps</a>をつけて<a href="http://twitter.com/#!/haiyan" target="_new">@haiyan</a>にフィードバックをツイートしてください。このマップは<a href="http://twitter.com/#!/kotobuki" target="_new">@kotobuki</a>のガイガーマップ（<a href="http://geigermaps.jp/" target="_new">http://geigermaps.jp</a>）にインスパイアされました。ラベルは<a href="http://blog.mridey.com/2009/09/label-overlay-example-for-google-maps.html" target="_new">Marc Ridley</a>のラベルクラスを用いています。IE6と7での表示問題の修正に関して、<a href="http://relishinteractive.com/" target="_new">Relish Interactive</a>のSacha Raposoに感謝します。</p>'+
+			'<p><a href="http://geigermaps.jp/Main_Page" target="_new">ガイガーマップJp</a>にアクセス。</p>'+
+			'<p>測定値を更新するにはリロードボタンを押してください。</p>'+
+			'<p>日本語訳：小林 茂（<a href="http://twitter.com/kotobuki" target="_new">Shigeru Kobayashi</a>）</p>';
+	var menu_link = document.getElementById("menu_all");
+	if (menu_link != undefined) {
+		menu_link.innerHTML = '<a href="#" onClick="switch_menu(\'menu_all\');gm_show_count(gm_feedcount);gm_show_markers(gm_labels_safecast_static);gm_show_markers(gm_labels_govt);gm_show_markers(gm_labels_crowd);" id="menu_all_link">全てのデータソース</a>';
+	}
+	menu_link = document.getElementById("menu_sc");
+	if (menu_link != undefined) {
+		menu_link.innerHTML = '<a href="#" onClick="switch_menu(\'menu_sc\');gm_show_count((gm_labels_safecast_static.length)/3);gm_show_markers(gm_labels_safecast_static);gm_clear_markers(gm_labels_govt);gm_clear_markers(gm_labels_crowd);"><img src="images/safecast_sml.png">Safecastの固定センサネットワーク</a>';
+	}
+	menu_link = document.getElementById("menu_crowd");
+	if (menu_link != undefined) {
+		menu_link.innerHTML = '<a href="#" onClick="switch_menu(\'menu_crowd\');gm_show_count((gm_labels_crowd.length)/3);gm_show_markers(gm_labels_crowd);gm_clear_markers(gm_labels_govt);gm_clear_markers(gm_labels_safecast_static);">個人のガイガーカウンタ</a>';
+	}
+	menu_link = document.getElementById("menu_govt");
+	if (menu_link != undefined) {
+		menu_link.innerHTML = '<a href="#" onClick="switch_menu(\'menu_govt\');gm_show_count((gm_labels_govt.length)/3);gm_show_markers(gm_labels_govt);gm_clear_markers(gm_labels_safecast_static);gm_clear_markers(gm_labels_crowd);">政府のセンサネットワーク</a>';
+	}
+	var search_form = document.getElementsByName("search_form")[0];
+	if (search_form != undefined) {
+		search_form.innerHTML = '<form onsubmit="gm_search(\'jp\'); return false" class="search">'+
+        '住所を入力して検索: <input type="text" size="40" id="q"></input>' +
+        '<input type="submit" value="検索"></input>'+
+      	'</form>';
+    }
+}
+
+function display_en() {
+	var title = document.getElementsByName("page_title")[0];
+	title.innerHTML =  '<h1>Japan Geigermap : At-a-glance</h1>';
+	var content = document.getElementsByName("content1")[0];
+	content.innerHTML = 
+			'<p><small><a href="#" onClick="display_jp();">日本語</a> | <a href="#" onClick="display_en();">English</a></small></p>'+
+			'<p>This map visualises crowd-sourced radiation geiger counter readings from across Japan. Click on the labels to get more information on the  source of each reading.</p>'+
+			'<p>The number of locations fluctuate due to the validity of the data feeds. There are approximately 185 feeds from the official Japanese government source MEXT and the rest are from other sources such as the Tokyo hackspace, universities,local councils and concerned individuals.</p>'+
+			'<p>Readings are aggregated by <a href="http://community.pachube.com/node/608" target="_new">Pachube here</a>. </p><hr/>'+
+			'<p id="key"><img src="key_01.gif" align=left>Below the average public space geiger reading for Japan ( 0.081 &#181;Sv per hr ).<br/><br/></p>'+
+			'<p id="key"><img src="key_02.png" align=left>Above the average public space geiger reading for Japan ( 0.081 &#181;Sv per hr ).<br/><br/></p>'+
+			'<p id="key"><img src="key_03.png" align=left>10x above the average public space geiger reading for Japan.<br/><br/></p>'+
+			'<p id="key"><img src="key_04.png" align=left>100x above the average public space geiger reading for Japan.<br/><br/></p>'+
+			'<p id="key"><img src="key_05.png" align=left>Radioactivity of water.<br/>No data on health impact.<br/><br/></p><hr/>'+
+			'<p><img src="images/safecast.png"><br/>Safecast is a volunteer organisation actively building a radiation sensor network within Japan and globally. Many of the crowd-sourced data points will originate from this effort. <a href="http://blog.safecast.org/">Please visit the Safecast site to learn more</a></p>';
+	var content2 = document.getElementsByName("content2")[0];
+	content2.innerHTML = '<hr/>'+
+			'<p>Measurements are represented in units of <b>microsieverts per hour ( &#181;Sv / h)</b>. Original geiger counter readings use the unit nGy/h and the conversion taken is 1 Gy = 1 Sv. (See the <a href="http://en.wikipedia.org/wiki/Sievert" target="_new">Wikipedia entry on Sieverts</a>)</p>'+
+			'<p>Geigermap refers to the average public space geiger counter reading for Japan, calculated from values provided by MEXT (0.081 µSv per hr). These values are much lower than values you would encounter for <i>normal background radiation</i>, as MEXT geiger counters are calibrated to only detect Gamma & Neutron radiation and do not detect all radiation types that is used to calculate background radiation.</p>'+
+			'<p>Japan Geigermap is created by <a href="http://blog.failedrobot.com/?page_id=5" target="_new">Haiyan Zhang</a>. Read my <a href="http://blog.failedrobot.com/?p=199" target="_new">blog post</a> on this map and you can also <a href="mailto:haiyan@gmail.com">email me your feedback</a>.</p>'+
+			'<p>Tweet me your feedback <a href="http://twitter.com/#!/haiyan" target="_new">@haiyan</a>, with hashtag <a href="http://twitter.com/#!/search?q=%23geigermaps" target="_new">#geigermaps</a></p>'+
+			'<p>This map is inspired by <a href="http://twitter.com/#!/kotobuki">@Kotobuki\'s</a> Geigermaps work (<a href="http://geigermaps.jp/">http://geigermaps.jp</a>). </p>'+
+			'<p>Labels are made with Marc Ridley\'s <a href="http://blog.mridey.com/2009/09/label-overlay-example-for-google-maps.html" target="_new">Label class</a>. Thanks to Neil Churcher (<a href="http://twitter.com/neilchurcher" target="_new">@neilchurcher</a>) for collaborating on the information design. Thanks to Sacha Raposo from <a href="http://relishinteractive.com/" target="_new">Relish Interactive</a> for fixing some display issues in IE6 & 7.<br/></p>'+
+			'<p>Visit the <a href="http://geigermaps.jp/wiki/" target="_new">Geigermaps.jp/wiki</a></p>'+
+			'<p>Hit reload to refresh these readings.</p>'+
+			'<p>Japanese translation provided by <a href="http://twitter.com/kotobuki" target="_new">Shigeru Kobayashi</a></p>';
+	var menu_link = document.getElementById("menu_all");
+	if (menu_link != undefined) {
+		menu_link.innerHTML = '<a href="#" onClick="switch_menu(\'menu_all\');gm_show_count(gm_feedcount);gm_show_markers(gm_labels_safecast_static);gm_show_markers(gm_labels_govt);gm_show_markers(gm_labels_crowd);" id="menu_all_link">All data sources</a>';
+	}
+	menu_link = document.getElementById("menu_sc");
+	if (menu_link != undefined) {
+		menu_link.innerHTML = '<a href="#" onClick="switch_menu(\'menu_sc\');gm_show_count((gm_labels_safecast_static.length)/3);gm_show_markers(gm_labels_safecast_static);gm_clear_markers(gm_labels_govt);gm_clear_markers(gm_labels_crowd);"><img src="images/safecast_sml.png">Safecast Fixed Sensor Network</a>';
+	}
+	menu_link = document.getElementById("menu_crowd");
+	if (menu_link != undefined) {
+		menu_link.innerHTML = '<a href="#" onClick="switch_menu(\'menu_crowd\');gm_show_count((gm_labels_crowd.length)/3);gm_show_markers(gm_labels_crowd);gm_clear_markers(gm_labels_govt);gm_clear_markers(gm_labels_safecast_static);">Individual Geiger Counters</a>';
+	}
+	menu_link = document.getElementById("menu_govt");
+	if (menu_link != undefined) {
+		menu_link.innerHTML = '<a href="#" onClick="switch_menu(\'menu_govt\');gm_show_count((gm_labels_govt.length)/3);gm_show_markers(gm_labels_govt);gm_clear_markers(gm_labels_safecast_static);gm_clear_markers(gm_labels_crowd);">Government Sensor Networks</a>';
+	}
+	var search_form = document.getElementsByName("search_form")[0];
+	if (search_form != undefined) {
+		search_form.innerHTML = '<form onsubmit="gm_search(\'jp\'); return false" class="search">'+
+        'Search for an address: <input type="text" size="40" id="q"></input>' +
+        '<input type="submit" value="Search"></input>'+
+      	'</form>';
+    }
+
+}
+
+var language = navigator.language; 
+if (language.indexOf('jp') > -1 ||language.indexOf('ja') > -1 ) display_jp(); 
+else {
+	display_en();
+}
+
+</script>
+	
+		<script type="text/javascript" src="map_embed.js"></script>
+		<script>
+			gm_init({
+				zoom: 7,
+				lat:36.597889,
+				lng:137.669678,
+				div: "map_canvas",
+				map_name: "jp",
+				show_label:true				
+			});
+			
+			gm_init({
+				zoom: 10,
+				lat:37.423071,
+				lng:141.028061,
+				div: "map_canvas_fukushima",
+				map_name: "fukushima",
+				show_label:false,
+				title: "Fukushima Daiichi Power Plant"
+			});			
+			gm_init({
+				zoom: 10,
+				lat:35.699686,
+				lng:139.743347,
+				div: "map_canvas_tokyo",
+				map_name: "tokyo",
+				show_label:false,
+				title: "Tokyo"
+			});	
+				
+			gm_load_feeds({
+				json: new Array("http://japan.failedrobot.com/xively_feed.json")
+//				json: new Array("http://api.xively.com/v2/feeds.json?&key=vBuz27JQmtIJ1ds6zFNvVcMMCXfZxYgPd51BQDswAf2j4gQ4&tag=sensor:type%3Dradiation&lat=37.5&lon=137.5&distance=1000&per_page=2000&order=created_at"),
+//				json: new Array("http://api.pachube.com/v2/feeds.json?key=dW1_5iByGtVAbVKe5hPTMdrVglDovcnVDgvqvZYsNB5VI-rfEdiZIhRb4voCw41m&tag=sensor:type%3Dradiation&lat=37.5&lon=137.5&distance=1000&per_page=2000&order=created_at"),
+			});
+			create_maps();
+		</script>
+	
+
+</html>
